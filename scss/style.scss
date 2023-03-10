@@ -1,0 +1,125 @@
+@import "resets";
+@import "colors";
+@import "fonts";
+@import "sizes";
+@import "spacings";
+@import "positions";
+@import "animations";
+@import "buttons";
+@import "functions";
+@import "mixins";
+
+body {
+  background-color: $light-color;
+  font-family: $font-default;
+  line-height: 1.6;
+}
+
+.showcase {
+  background-color: $hero-color;
+  min-height: 600px;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    ul {
+      display: flex;
+      list-style-type: none;
+    }
+    li {
+      padding: 15px;
+    }
+    a {
+      color: $light-color;
+    }
+    a:hover {
+      color: $secondary-color;
+    }
+  }
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+
+    img {
+      @include floating(0 16px 36px rgb(0 0 0 / 0.3), 16px, 2px solid lighten($hero-color, 30));
+      @include animate-y(1s, -100%, 60px, 800ms);
+      width: 50%;
+    }
+    h1 {
+      @include title-big;
+      @include animate-y(1s, 10px, 0, 300ms);
+    }
+    p {
+      @include animate-y(1s, 10px, 0, 600ms);
+      color: lighten($hero-color, 40);
+      font-size: $font-size-medium;
+      line-height: 1.6;
+      letter-spacing: 1px;
+      padding-inline-end: 3rem;
+    }
+    button:first-of-type {
+      @include animate-y(1s, 10px, 0, 800ms);
+    }
+    button:nth-of-type(2) {
+      @include animate-y(1s, 10px, 0, 900ms);
+    }
+    button:last-of-type {
+      @include animate-y(1s, 10px, 0, 1000ms);
+    }
+  }
+}
+
+main {
+  position: relative;
+
+  .line-4 {
+    @include grid(4);
+    div {
+      padding-inline: 0.5rem;
+      img {
+        width: 100%;
+        @include floating(0 6px 10px rgb(0 0 0 /0.3));
+      }
+    }
+
+    @include animate-generic(2s) {
+      from {
+        opacity: 0;
+        translate: 0 -30px;
+      }
+      50% {
+        background-color: red;
+      }
+      to {
+        opacity: 1;
+        translate: 0 0;
+      }
+    }
+  }
+
+  .long-shadow {
+    text-align: center;
+    h2 {
+      font-size: 68px;
+      font-weight: 900;
+      color: $primary-color;
+
+      text-shadow: createLongShadow(black, 150);
+    }
+  }
+
+  .multiple-borders {
+    text-align: center;
+    .box {
+      width: 300px;
+      height: 300px;
+      display: inline-block;
+      background-color: black;
+
+      box-shadow: boxShadowsLighten($tertiary-color, 10);
+    }
+  }
+}

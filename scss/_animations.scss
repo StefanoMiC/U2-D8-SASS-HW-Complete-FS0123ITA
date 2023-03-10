@@ -1,0 +1,30 @@
+@mixin animate-y($duration, $start, $end, $delay: 0) {
+  $uniqueName: animate-#{unique-id()};
+  @keyframes #{$uniqueName} {
+    from {
+      opacity: 0;
+      translate: 0 $start * -1;
+    }
+    to {
+      opacity: 1;
+      translate: 0 $end;
+    }
+  }
+
+  animation-name: $uniqueName;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  animation-delay: $delay;
+}
+
+@mixin animate-generic($duration, $delay: 0) {
+  $uniqueName: animate-#{unique-id()};
+  @keyframes #{$uniqueName} {
+    @content;
+  }
+
+  animation-name: $uniqueName;
+  animation-duration: $duration;
+  animation-fill-mode: both;
+  animation-delay: $delay;
+}

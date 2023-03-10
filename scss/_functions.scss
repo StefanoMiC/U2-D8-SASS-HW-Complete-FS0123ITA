@@ -1,0 +1,27 @@
+@function createLongShadow($color, $length) {
+  $val: null;
+
+  @for $i from 1 through $length {
+    $val: $val, #{$i}px #{$i}px $color;
+  }
+
+  @return $val;
+}
+
+@function boxShadows($colors, $size) {
+  $val: null;
+
+  @for $i from 1 through length($colors) {
+    $val: $val, 0 0 0 #{10 * $i}px nth($colors, $i);
+  }
+  @return $val;
+}
+
+@function boxShadowsLighten($color, $steps) {
+  $val: null;
+
+  @for $i from 1 through $steps {
+    $val: $val, 0 0 0 #{10 * $i}px lighten($color, $i * 5);
+  }
+  @return $val;
+}
